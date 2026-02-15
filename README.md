@@ -13,7 +13,7 @@
 
 
 **Hosted Project Link:**
-[https://your-username.github.io/E-Med/](https://your-username.github.io/E-Med/)
+https://neonarose.github.io/E-MED/
 
 **Project Description:**
 E-Med is a browser-based progressive web application designed to simplify medicine delivery for the elderly. It uses AI-powered Optical Character Recognition (OCR) to read handwritten prescriptions directly from the camera and integrates with real-time OpenStreetMap data to locate nearby pharmacies. It features a "Scan-to-Delivery" workflow, live order tracking simulation, and a one-touch SOS emergency system.
