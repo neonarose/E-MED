@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="./img.png" alt="Project Banner" width="100%">
+  <img src="<img width="1024" height="401" alt="image" src="https://github.com/user-attachments/assets/b9bdd7a7-cb3a-469c-a156-bf81b18abbb6" />
+
 </p>
 
 # E-MED 💊
