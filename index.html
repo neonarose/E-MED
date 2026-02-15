@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>E-Med | Instant Medicine Delivery</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+</head>
+<body>
+
+    <div id="page-home" class="screen active">
+        <div class="pe-header">
+            <nav>
+                <div class="logo"><i class="fa-solid fa-heart-pulse"></i> E-Med</div>
+                <div class="nav-icons">
+                    <span><i class="fa-regular fa-user"></i> Login</span>
+                    <span><i class="fa-solid fa-cart-shopping"></i> Cart</span>
+                </div>
+            </nav>
+            <div class="hero-text">
+                <h1>Medicines in Minutes ⚡</h1>
+                <p>Real-time delivery from pharmacies near you.</p>
+            </div>
+        </div>
+
+        <div class="main-card-container">
+            <div class="white-card">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search medicines...">
+                    <button class="search-btn">Search</button>
+                </div>
+
+                <div class="divider"><span>OR ORDER VIA</span></div>
+
+                <div class="action-grid-pe">
+                    <div class="action-item" onclick="showScreen('page-upload')">
+                        <div class="icon-circle green"><i class="fa-solid fa-camera"></i></div>
+                        <h3>Camera Order</h3>
+                        <p>Scan Prescription</p>
+                    </div>
+                    <div class="action-item" onclick="showScreen('page-emergency')">
+                        <div class="icon-circle red"><i class="fa-solid fa-phone"></i></div>
+                        <h3>Emergency</h3>
+                        <p>SOS Ambulance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-upload" class="screen hidden">
+        <header class="simple-header">
+            <button onclick="showScreen('page-home')"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <h3>Upload Prescription</h3>
+        </header>
+
+        <div class="container">
+            <div class="upload-zone-pe">
+                <input type="file" id="cameraInput" accept="image/*" onchange="handleImageUpload()">
+                <label for="cameraInput">
+                    <div class="camera-icon-large"><i class="fa-solid fa-camera"></i></div>
+                    <h3>Tap to Capture</h3>
+                    <p>AI will enhance & read handwriting</p>
+                </label>
+                <img id="slip-preview" class="hidden">
+            </div>
+
+            <div id="ocr-status" class="hidden status-msg">
+                <i class="fa-solid fa-circle-notch fa-spin"></i> Processing Image...
+            </div>
+
+            <div id="ocr-result" class="hidden result-box-pe">
+                <label>AI Detected:</label>
+                <input type="text" id="detected-text" placeholder="No text detected">
+                <p class="hint">Verify the name before searching.</p>
+                <button class="btn-pe-primary" onclick="findStores()">Find Real Stores</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-pharmacy" class="screen hidden">
+        <header class="simple-header">
+            <button onclick="showScreen('page-upload')"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <h3>Pharmacies Near You</h3>
+        </header>
+
+        <div id="map-stores" class="full-map"></div>
+
+        <div id="store-card" class="bottom-sheet hidden">
+            <div class="sheet-handle"></div>
+            <div class="best-tag" id="best-badge"><i class="fa-solid fa-bolt"></i> Fastest Option</div>
+            <h2 id="store-name">Store Name</h2>
+            <div id="store-stock" class="stock-info">Checking Inventory...</div>
+            <button class="btn-pe-primary full" onclick="confirmOrder()">Confirm Order</button>
+        </div>
+    </div>
+
+    <div id="page-track" class="screen hidden">
+        <div class="track-overlay">
+            <h2>Arriving in <span class="highlight">10 mins</span></h2>
+            <p>Live Order Tracking</p>
+        </div>
+        <div id="map-track" class="full-map"></div>
+    </div>
+
+    <div id="page-thankyou" class="screen hidden">
+        <div class="thankyou-container">
+            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <h1>Order Delivered!</h1>
+            <p>Your medicine has been delivered.</p>
+            <div class="rating-box">
+                <p>Rate Service</p>
+                <div class="stars">
+                    <i class="fa-regular fa-star" onclick="rate(1)"></i>
+                    <i class="fa-regular fa-star" onclick="rate(2)"></i>
+                    <i class="fa-regular fa-star" onclick="rate(3)"></i>
+                    <i class="fa-regular fa-star" onclick="rate(4)"></i>
+                    <i class="fa-regular fa-star" onclick="rate(5)"></i>
+                </div>
+            </div>
+            <button class="btn-text" onclick="resetApp()">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="page-emergency" class="screen hidden warning-mode">
+        <div class="center-content">
+            <div class="sos-icon"><i class="fa-solid fa-bell"></i></div>
+            <h1>SOS</h1>
+            <p>Calling 112...</p>
+            <a href="tel:112" class="btn-white">Call Now</a>
+            <button onclick="showScreen('page-home')" class="btn-cancel">Cancel</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
