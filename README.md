@@ -69,6 +69,57 @@ git clone [https://github.com/your-username/E-Med.git](https://github.com/your-u
 # Navigate to the project directory
 cd E-Med
 
+### Project Documentation
+
+**For Software:**
+
+**Screenshots**
+
+| Home Screen | Smart Scan | Live Tracking |
+|:---:|:---:|:---:|
+| ![Home](screenshots/home.png) | ![Scan](screenshots/scan.png) | ![Track](screenshots/track.png) |
+| *Accessible "PharmEasy" Style UI* | *AI Reads Handwriting Instantly* | *Real-time Delivery Simulation* |
+
+> **Note:** Please ensure you have a folder named `screenshots` in your repository containing images named `home.png`, `scan.png`, and `track.png`.
+
+**Diagrams**
+
+**1. System Architecture**
+
+![System Architecture](https://mermaid.ink/img/pako:eNp1kMtqwzAQRX9FzKpF_AAfC6F0001CNkWW1lgewx5JjBNC_r1yHCSBojQz986RRotgTRF0hO-A98Zq-F5Zg8_eOk_OKK0Q5E2j0fJp-1iS95_f1w25hB41WvOOp2-d0y4-Qk4d_sF2oQ8l9MhOa_QG21X8T2_wA5pQ7q20eOes_sM3-A0Vj4Jd5Q618g57h86i52q0QoP33uA3dKx4FPRn9A9Y8SzoP7Cj4lHwR8V_wIaKR8FqikfB_6p4FPw3xU8x919lq6b5Anz5bWk?type=png)
+
+* **Client Browser:** Handles Camera input and UI rendering.
+* **Tesseract.js (WASM):** Processes images locally (offline-capable OCR).
+* **Overpass API:** Fetches live pharmacy nodes from OpenStreetMap.
+* **Leaflet.js:** Visualizes coordinates and draws the delivery route.
+
+**2. Application Workflow**
+
+![Application Workflow](https://mermaid.ink/img/pako:eNp1kstqwzAQRX9FzKpF_AAfC6F0001CNkWW1lgewx5JjBNC_r1yHCSBojQz986RRotgTRF0hO-A98Zq-F5Zg8_eOk_OKK0Q5E2j0fJp-1iS95_f1w25hB41WvOOp2-d0y4-Qk4d_sF2oQ8l9MhOa_QG21X8T2_wA5pQ7q20eOes_sM3-A0Vj4Jd5Q618g57h86i52q0QoP33uA3dKx4FPRn9A9Y8SzoP7Cj4lHwR8V_wIaKR8FqikfB_6p4FPw3xU8x919lq6b5Anz5bWk?type=png)
+
+* **User Journey:** Scan -> Verify Text -> Find Stores -> Select Store -> Track Delivery.
+
+---
+
+### Additional Documentation
+
+**API Documentation (External)**
+
+This project relies on the **OpenStreetMap Overpass API** for geospatial data.
+
+**Base URL:** `https://overpass-api.de/api/interpreter`
+
+**Endpoints Used:**
+
+* **GET / (Query Mode)**
+    * **Description:** Fetches all nodes tagged as `amenity=pharmacy` within a 5km radius of the user.
+    * **Query logic:** `[out:json];node["amenity"="pharmacy"](around:5000,LAT,LON);out;`
+    * **Response Format:** JSON containing an array of elements with `lat`, `lon`, and `tags.name`.
+
+**Image Processing Pipeline:**
+
+1.  **Input:** Raw RGB image from `<input type="file">`.
+2.  **Preprocessing:** Canvas manipulation to resize to 600px width (optimization) + Binarization (Greyscale Thresholding) to enhance contrast.
+3.  **Output:** High-contrast blob passed to Tesseract.js engine.
 
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
