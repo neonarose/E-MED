@@ -13,7 +13,7 @@
 - Member 2: ANAKHA SARA MANOJ - SAINTGITS COLLEGE OF ENGG
 
 ### Hosted Project Link
-[mention your project hosted link here]
+https://github.com/neonarose/E-MED
 
 ### Project Description
 E-Med is an accessibility-first web app that helps elderly users order medicine by simply scanning handwritten prescriptions with AI, eliminating the need to type complex names. It integrates with OpenStreetMap to instantly locate nearby pharmacies and provides live delivery tracking for a seamless healthcare experience.
