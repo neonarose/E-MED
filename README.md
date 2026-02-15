@@ -1,68 +1,70 @@
-# 💊 E-Med: AI-Powered Hyperlocal Medicine Delivery
+# E-Med 💊
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Status](https://img.shields.io/badge/status-Live%20Prototype-success.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-
-**E-Med** is a progressive web application designed to bridge the digital gap for elderly patients. Unlike complex e-commerce apps, E-Med uses **AI Optical Character Recognition (OCR)** to read handwritten prescriptions and finds real-time availability in local pharmacies using **Geolocation** and **OpenStreetMap**.
+![E-Med Status](https://img.shields.io/badge/Status-Prototype%20Live-success)
+> **Here, you don't have to be less of a girl to do the coolest stuff.**
 
 ---
 
-## 🚀 Key Features
+### Basic Details
 
-### 1. 📸 **Smart Scan (AI OCR)**
-* Uses **Tesseract.js** to read physical prescriptions directly in the browser.
-* Includes a custom **Image Pre-processing Engine** (Binarization & Contrast Enhancement) to improve accuracy on handwritten notes.
-* "Human-in-the-loop" verification to prevent medication errors.
+**Team Members:**
+* **Member 1:** NEONA ROSE JOYAL MATTAM - SAINTGITS COLLEGE OF ENGG
+* **Member 2:** ANAKHA SARA MANOJ- SAINTGITS COLLEGE OF ENGG
 
-### 2. 🗺️ **Live Pharmacy Finder**
-* Integrates with **OpenStreetMap (Overpass API)** to fetch *actual* pharmacy locations within a 5km radius of the user's real-time GPS location.
-* No hardcoded data – works anywhere in the world where OSM data exists.
 
-### 3. ⚡ **Smart Routing & Tracking**
-* Calculates the **Fastest Route** using Leaflet geometry logic.
-* Simulates a live delivery rider moving from the store to the user's home on the map.
+**Hosted Project Link:**
+[https://your-username.github.io/E-Med/](https://your-username.github.io/E-Med/)
 
-### 4. 🛡️ **Universal Fallback**
-* If a medicine is not found locally, the app automatically generates deep links to **Amazon Pharmacy** or **Swiggy Instamart** to ensure the patient never goes without medication.
+**Project Description:**
+E-Med is a browser-based progressive web application designed to simplify medicine delivery for the elderly. It uses AI-powered Optical Character Recognition (OCR) to read handwritten prescriptions directly from the camera and integrates with real-time OpenStreetMap data to locate nearby pharmacies. It features a "Scan-to-Delivery" workflow, live order tracking simulation, and a one-touch SOS emergency system.
 
-### 5. 🆘 **One-Touch SOS**
-* Dedicated emergency mode that connects immediately to Ambulance services (112).
+**The Problem statement:**
+Elderly patients and users with limited technical literacy struggle with complex e-commerce interfaces, typing difficult medicine names, and navigating multiple menus to order essential medication. Existing apps often lack accessibility features for urgent medical needs.
+
+**The Solution:**
+E-Med solves this by removing the need to type. Users simply take a photo of their prescription. Our AI reads the text, extracts medicine names, and automatically locates the nearest pharmacy using GPS. A "Human-in-the-loop" design allows for verification, and a universal fallback ensures users are redirected to major platforms (Amazon/Instamart) if local stock is unavailable.
 
 ---
 
-## 🛠️ Tech Stack
+### Technical Details
 
-* **Frontend:** HTML5, CSS3 (PharmEasy UI Theme)
-* **Scripting:** Vanilla JavaScript (ES6+)
-* **AI Engine:** [Tesseract.js](https://tesseract.projectnaptha.com/) (Browser-based OCR)
-* **Maps:** [Leaflet.js](https://leafletjs.com/)
-* **Data Source:** [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) (Real-time OpenStreetMap data)
+**Technologies/Components Used**
+
+**For Software:**
+* **Languages used:** HTML5, CSS3, JavaScript (ES6+)
+* **Frameworks used:** None (Vanilla JS for performance)
+* **Libraries used:** * `Tesseract.js` (v2.1.0) - Client-side OCR
+  * `Leaflet.js` (v1.9.4) - Interactive Maps
+  * `FontAwesome` (v6.4.0) - UI Icons
+* **Tools used:** VS Code, Git, GitHub Pages, OpenStreetMap (Overpass API)
+
+**For Hardware:**
+* **Main components:** Smartphone with Camera & GPS (Required for scanning & location features)
+* **Specifications:** Modern Web Browser (Chrome/Edge/Safari) supporting MediaDevices API
+* **Tools required:** Local Development Server (Live Server extension)
 
 ---
 
-## 📸 Screenshots
+### Features
 
-| Landing Page | AI Scanning | Live Tracking |
-|:---:|:---:|:---:|
-| <img src="screenshots/home.png" width="250"> | <img src="screenshots/scan.png" width="250"> | <img src="screenshots/track.png" width="250"> |
+**List the key features of your project:**
 
-*(Note: Add screenshots to a folder named `screenshots` in your repo to make these visible)*
+* **Feature 1: Smart Scan (AI OCR)** - Uses Tesseract.js with custom image pre-processing (binarization) to read handwritten prescriptions instantly.
+* **Feature 2: Real-Time Pharmacy Finder** - Integrates Overpass API to fetch live pharmacy locations within a 5km radius of the user's GPS coordinates.
+* **Feature 3: Live Tracking Simulation** - Visualizes the delivery rider's path from the store to the user's location using Leaflet geometry to reduce user anxiety.
+* **Feature 4: Universal Fallback** - Automatically generates deep search links for Amazon Pharmacy and Swiggy Instamart if local stores are out of stock.
+* **Feature 5: One-Touch SOS** - A dedicated, high-contrast emergency mode that connects users to ambulance services (112) immediately.
 
 ---
 
-## ⚙️ How to Run Locally
+### Implementation
 
-Since this project uses **Camera** and **Geolocation**, modern browsers require it to run on a secure context (HTTPS) or localhost. **You cannot just double-click `index.html`.**
+**For Software:**
 
-### Option 1: VS Code (Recommended)
-1.  Clone the repository.
-2.  Install the **"Live Server"** extension in VS Code.
-3.  Right-click `index.html` and select **"Open with Live Server"**.
-
-### Option 2: Python Simple Server
-If you have Python installed:
+**Installation**
 ```bash
-# Open terminal in project folder
-python -m http.server 8000
-# Go to http://localhost:8000 in your browser
+# Clone the repository
+git clone [https://github.com/your-username/E-Med.git](https://github.com/your-username/E-Med.git)
+
+# Navigate to the project directory
+cd E-Med
