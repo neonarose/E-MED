@@ -1,7 +1,7 @@
 # E-Med 💊
 
 ![E-Med Status](https://img.shields.io/badge/Status-Prototype%20Live-success)
-> **Here, you don't have to be less of a girl to do the coolest stuff.**
+> **Medicines in Minutes ⚡**
 
 ---
 
